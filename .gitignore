@@ -1,0 +1,7 @@
+docs/.obsidian/
+
+C:\Users\awais\fyp\axa2259\src\Models\Weights*.pth
+src/Models/UnifiedWeights/
+__pycache__/
+*.pyc
+*.pth
