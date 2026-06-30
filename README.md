@@ -3,8 +3,6 @@
 **Author**: Awais Aamir   
 **Supervisor**: Jizheng Wan
 
-**Report**: [FYP Report](https://git.cs.bham.ac.uk/projects-2025-26/axa2259/-/blob/main/Report/FYPReport.pdf?ref_type=heads)
-
 ## **Project Summary**
 
 This project investigates how different transfer learning regimes interact with post-training quantisation (PTQ) in a TinyML setting. Using MobileNetV2-0.35 pretrained on ImageNet, models are adapted to a subset of the PlantVillage dataset under four transfer learning strategies:
@@ -36,7 +34,6 @@ This repository contains the code and experimental pipeline for my Final Year Pr
 
 Additional directories include:
 - **Logs/** - Training and evaluation logs for  transfer learning regimes and quantisation experiments
-- **Docs/** - Early draft of the project literature review
 
 
 ## Dataset
