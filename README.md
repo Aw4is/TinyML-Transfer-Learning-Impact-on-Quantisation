@@ -1,4 +1,4 @@
-# **TinyML: Transfer Learning & INT8 Quantisation**
+# **TinyML: Evaluating Transfer Learning under INT8 Quantisation**
 
 **Author**: Awais Aamir   
 **Supervisor**: Jizheng Wan
