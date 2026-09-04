@@ -1,4 +1,4 @@
-# **Behavioural Evaluation of Post-Training Quantisation Across Transfer Learning Regimes in TinyML**
+# **TinyML: Transfer Learning & INT8 Quantisation**
 
 **Author**: Awais Aamir   
 **Supervisor**: Jizheng Wan
