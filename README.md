@@ -21,11 +21,9 @@ I then compared how each responded to INT8 quantisation using accuracy degradati
 
 ## Why It Matters
 
-Training strategy affects both the cost of adapting a model and how much performance may be lost after quantisation. More complex approaches such as knowledge distillation require additional training effort, while lighter strategies can sometimes retain similar post-quantisation performance at lower cost. Moreover, PEFT-style training is still relatively underexplored in TinyML and are worth investigating when training compute or time is limited.
+Training strategy affects the resources needed to adapt a model, but it may also affect how well that model holds up after quantisation. More complex methods like knowledge distillation can take more compute, time and cost, while lighter approaches may achieve similar INT8 results. This project explores whether that trade-off changes across different training strategies.
 
-Beyond accuracy, differences in prediction stability, class-level behaviour and robustness to corrupted inputs can also influence which model is actually best suited for deployment, especially at the edge where inputs are rarely clean.
-
-For teams working under compute or time constraints, comparing how different training methods degrade and behave after quantisation can help identify which is better suited for deployment.
+Accuracy alone may not tell the full story. Prediction stability, class-level behaviour and robustness to corrupted inputs can also matter, so comparing how different training methods degrade and behave after quantisation gives a better basis for deployment decisions.
 
 ## Key Findings
 
