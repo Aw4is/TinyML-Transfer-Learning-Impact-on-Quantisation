@@ -20,13 +20,13 @@ I then compared how each responded to INT8 quantisation using accuracy degradati
 
 ## Why It Matters
 
-Training strategy affects the resources needed to adapt a model, but it may also affect how well that model holds up after quantisation. More complex methods like knowledge distillation can take more compute, time and cost, while lighter approaches may achieve similar INT8 results. This project explores whether that trade-off changes across different training strategies.
+Training strategies differ in how much of the model they adapt, affecting compute and training time. More complex methods like knowledge distillation require more resources, while lighter approaches may still behave similarly after INT8 quantisation.
 
 Accuracy alone may not tell the full story. Prediction stability, class-level behaviour and robustness to corrupted inputs can also matter, so comparing how different training methods degrade and behave after quantisation gives a better basis for deployment decisions.
 
 ## Key Findings
 
-- Most adaptive training methods retained strong performance after INT8 quantisation, with only ~0.5–1.4% accuracy degradation, while Linear Probing dropped by ~2.7%.
+- Small differences in post-quantisation accuracy degradation appeared across the adaptive methods (~0.5–1.4%), while Linear Probing showed a noticeably larger drop of ~2.7%.
 - Full Fine Tuning outperformed Knowledge Distillation, despite KD using a much larger ResNet50 teacher, showing that extra training complexity did not guarantee better results in this setup.
 - BatchNorm tuning performed similarly while updating only a small part of the model, making PEFT-style approaches worth exploring when training compute is limited.
 - Differences between adaptive approaches became clearer under harsher corruption, while prediction stability, output distributions and class-level performance were otherwise broadly similar.
