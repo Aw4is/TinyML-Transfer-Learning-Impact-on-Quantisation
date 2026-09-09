@@ -6,8 +6,7 @@
 
 ## Overview
 
-TinyML deployments often rely on INT8 quantisation to reduce the cost of running neural networks on resource-constrained hardware.
-
+TinyML often targets specialised tasks with limited labelled data, making transfer learning a practical way to adapt pretrained models. INT8 quantisation is commonly used to reduce deployment cost on constrained hardware, but can also affect accuracy and model behaviour.
 This project investigates a practical question:
 
 > **Does transfer learning strategy affect accuracy degradation and wider model behaviour after INT8 quantisation?**
