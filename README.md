@@ -12,52 +12,35 @@ This project investigates a practical question:
 
 > **Does transfer learning strategy affect accuracy degradation and wider model behaviour after INT8 quantisation?**
 
-Using a fixed MobileNetV2-0.35 architecture, I compared four transfer learning strategies before and after post-training quantisation:
+Using a fixed MobileNetV2-0.35 architecture, I compared Linear Probing (frozen backbone) against three adaptive approaches:
 
 - Full Fine Tuning
-- Linear Probing
 - Batch Normalisation Tuning
 - Knowledge Distillation
 
-Evaluation covered not only headline accuracy, but also prediction stability, output distribution changes, class-level behaviour and robustness under corrupted inputs.
+I then compared how each responded to INT8 quantisation using accuracy degradation, prediction stability, class-level performance and robustness under corrupted inputs.
 
 ## Why It Matters
 
-Quantisation is often treated as a post-training optimisation step, but the way a model is trained may also affect how well it responds to INT8 conversion.
+Training strategy affects both the cost of adapting a model and how much performance may be lost after quantisation. More complex approaches such as knowledge distillation require additional training effort, while lighter strategies can sometimes retain similar post-quantisation performance at lower cost. Moreover, PEFT-style training is still relatively underexplored in TinyML and are worth investigating when training compute or time is limited.
 
-This project explores whether transfer learning strategy influences accuracy degradation and wider model behaviour after quantisation.
+Beyond accuracy, differences in prediction stability, class-level behaviour and robustness to corrupted inputs can also influence which model is actually best suited for deployment, especially at the edge where inputs are rarely clean.
 
-Understanding that relationship can help inform deployment decisions where accuracy, prediction stability and robustness matter, particularly in resource-constrained or edge environments.
+For teams working under compute or time constraints, comparing how different training methods degrade and behave after quantisation can help identify which is better suited for deployment.
 
 ## Key Findings
 
-- Transfer learning strategies did not degrade uniformly after INT8 quantisation.
-- Linear Probing showed the largest FP32 → INT8 accuracy drop at approximately **2.7%**.
-- Full Fine Tuning, BatchNorm tuning and Knowledge Distillation showed smaller degradation of approximately **0.5–1.4%**.
-- High-performing regimes showed broadly similar behaviour overall, although smaller differences remained in prediction stability and output distributions.
-- Robustness trends were similar under mild-to-moderate corruption, with clearer differences emerging at more severe levels.
-
-These results suggest that **training strategy can be a relevant consideration when preparing models for quantised deployment**, rather than evaluating deployment suitability from FP32 accuracy alone.
-
+- Most adaptive training methods retained strong performance after INT8 quantisation, with only ~0.5–1.4% accuracy degradation, while Linear Probing dropped by ~2.7%.
+- Full Fine Tuning outperformed Knowledge Distillation, despite KD using a much larger ResNet50 teacher, showing that extra training complexity did not guarantee better results in this setup.
+- BatchNorm tuning performed similarly while updating only a small part of the model, making PEFT-style approaches worth exploring when training compute is limited.
+- Differences between adaptive approaches became clearer under harsher corruption, while prediction stability, output distributions and class-level performance were otherwise broadly similar.
+  
 ## Technical Approach
 
-The project uses:
-
-- **Python / PyTorch**
-- MobileNetV2-0.35 pretrained on ImageNet
-- PlantVillage image classification dataset
-- PyTorch FX Graph Mode static INT8 quantisation
-- FBGEMM backend
-- Multi-seed experimentation for reproducibility
-
-Evaluation includes:
-
-- FP32 and INT8 accuracy
-- Accuracy degradation
-- Prediction flip rate
-- KL divergence
-- Class-level analysis
-- Gaussian noise and JPEG corruption testing
+- Python / PyTorch with MobileNetV2-0.35 on PlantVillage
+- Static INT8 quantisation using PyTorch FX Graph Mode and FBGEMM
+- Evaluation: accuracy degradation, prediction stability, KL divergence, class-level performance and corruption robustness
+- Multi-seed experiments for reproducibility
 
 ## Repository Structure
 
