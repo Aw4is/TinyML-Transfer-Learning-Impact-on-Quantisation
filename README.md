@@ -23,7 +23,9 @@ Evaluation covered not only headline accuracy, but also prediction stability, ou
 
 ## Why It Matters
 
-Quantisation is often treated as a post-training optimisation step, but the way a model is trained may also affect how well it responds to INT8 conversion. This project explores whether transfer learning strategy influences accuracy degradation and wider model behaviour after quantisation.
+Quantisation is often treated as a post-training optimisation step, but the way a model is trained may also affect how well it responds to INT8 conversion.
+
+This project explores whether transfer learning strategy influences accuracy degradation and wider model behaviour after quantisation.
 
 Understanding that relationship can help inform deployment decisions where accuracy, prediction stability and robustness matter, particularly in resource-constrained or edge environments.
 
@@ -64,12 +66,6 @@ Evaluation includes:
 - `src/Quantisation/` – INT8 quantisation and evaluation
 - `src/Verification/` – validation and sanity checks
 - `Logs/` – experiment and evaluation logs
-
-## Reproducibility
-
-Dataset splits and trained checkpoints are available here:
-
-[Google Drive – Dataset and Model Weights](https://drive.google.com/drive/u/1/folders/1ftqoSnLfy8quNMfq8hg2TEOrADYY9hAZ)
 
 ## Running an Experiment
 
