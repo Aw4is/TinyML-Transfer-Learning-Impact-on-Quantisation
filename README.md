@@ -84,7 +84,7 @@ SAVE_DIR = r"/path/to/log_directory"
 ```
 ### Post-Training Quantisation:
 
-First, point the quantisation script to the trained checkpoints (in src/Quantisation/Global), which should contain the five seed checkpoints generated during training:
+First, point the quantisation script (in src/Quantisation/Global) to the trained checkpoints, which should contain the five seed checkpoints generated during training:
 
 ```bash
 WEIGHTS_DIR = Path(r"UnifiedWeights/FFT")
