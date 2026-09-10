@@ -20,7 +20,7 @@ I then compared how each responded to INT8 quantisation using accuracy degradati
 
 ## Why It Matters
 
-Training strategies differ in how much of the model they adapt, affecting compute and training time. More complex methods like knowledge distillation require more resources, while lighter approaches may still behave similarly after INT8 quantisation. If so, lighter methods could offer a more practical route to deployment when resources are limited.
+Training strategies differ in how much of the model they adapt, affecting compute and training time. More complex methods like knowledge distillation require more resources, while lighter approaches may still behave similarly after INT8 quantisation. If so, lighter methods could reduce the compute and energy needed for training and deployment, potentially lowering both cost and environmental impact.
 
 Accuracy alone may not tell the full story. Prediction stability, class-level behaviour and robustness to corrupted inputs can also matter, so comparing how different training methods degrade and behave after quantisation gives a better basis for deployment decisions.
 
